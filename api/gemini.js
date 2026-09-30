@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     }
 
     const hariIni = new Date().toLocaleDateString('id-ID', { 
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+        weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' 
     });
 
     const promptText = `
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
         {
         "renungan": [
             {
-            "tanggal": "YYYY-MM-DD",
+            "tanggal": "DD MMMM YYYY",
             "judul": "Judul renungan yang singkat dan menarik",
             "ayat": "Nama Kitab Pasal:Ayat",
             "ayat_teks": "Isi ayat lengkap versi Terjemahan Baru (TB) LAI",
