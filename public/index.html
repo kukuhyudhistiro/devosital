@@ -48,6 +48,10 @@
                 // Memanggil backend serverless Vercel kita sendiri
                 const response = await fetch('/api/gemini');
                 
+                if (response.status === 404 || response.status === 503) {
+                    throw new Error('Sistem sedang high-demand');
+                }
+
                 if (!response.ok) {
                     const errData = await response.json();
                     throw new Error(errData.error || `HTTP error! status: ${response.status}`);
@@ -72,7 +76,9 @@
 
             } catch (error) {
                 console.error('Error:', error);
-                alert('Terjadi kesalahan: ' + error.message);
+                alert(error.message === 'Sistem sedang high-demand'
+                    ? error.message
+                    : 'Terjadi kesalahan: ' + error.message);
             } finally {
                 btn.disabled = false;
                 loading.style.display = 'none';
