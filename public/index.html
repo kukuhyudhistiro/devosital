@@ -15,7 +15,9 @@
         button:disabled { background-color: #cccccc; cursor: not-allowed; }
         .renungan-card { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 5px solid #4CAF50; }
         .tanggal { font-weight: bold; color: #666; font-size: 0.9em; }
-        .ayat { font-style: italic; color: #1565C0; margin-bottom: 15px; display: block; }
+        .ayat-card { background: #f3f7f4; border-left: 3px solid #52796f; padding: 14px 16px; margin: 16px 0 20px; border-radius: 0 4px 4px 0; }
+        .ayat { color: #3f665b; font-size: 0.9em; font-weight: bold; }
+        .ayat-teks { margin: 8px 0 0; color: #39443f; font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; font-style: italic; line-height: 1.7; white-space: pre-line; }
         .doa { background: #f1f8e9; padding: 10px; border-radius: 4px; margin-top: 15px; font-style: italic; }
         .renungan-card p, .doa { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.75; }
         #loading { display: none; text-align: center; margin: 20px; font-weight: bold; color: #4CAF50; }
@@ -75,7 +77,10 @@
                     card.innerHTML = `
                         <div class="tanggal">${item.tanggal}</div>
                         <h2>${item.judul}</h2>
-                        <span class="ayat">📖 ${item.ayat}</span>
+                        <div class="ayat-card">
+                            <span class="ayat">📖 ${item.ayat}</span>
+                            ${item.ayat_teks ? `<p class="ayat-teks">${item.ayat_teks}</p>` : ''}
+                        </div>
                         <p>${item.isi_renungan}</p>
                         <div class="doa"><strong>Doa:</strong> ${item.doa}</div>
                     `;
