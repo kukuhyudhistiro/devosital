@@ -17,10 +17,10 @@ export default async function handler(req, res) {
     });
 
     const promptText = `
-        Buatkan renungan Kristen harian untuk 1 hari ini, dimulai dari tanggal ${hariIni}. 
-        Setiap renungan harus memiliki tema yang saling berkaitan atau membangun untuk satu minggu ke depan.
+        Buatkan tepat satu renungan Kristen untuk hari ini, tanggal ${hariIni}.
+        Renungan harus berfokus pada satu tema yang relevan untuk hari ini.
         
-        KEMBALIKAN HANYA DALAM FORMAT ARRAY JSON MURNI tanpa markdown (jangan gunakan \`\`\`json).
+        KEMBALIKAN ARRAY JSON MURNI yang berisi tepat satu objek, tanpa markdown (jangan gunakan \`\`\`json).
         Struktur JSON yang diharapkan:
         [
           {
@@ -46,21 +46,30 @@ export default async function handler(req, res) {
             })
         });
 
+       // ... (kode fetch sebelumnya tetap sama)
+        
         if (!response.ok) {
+            const errorData = await response.text();
+            console.error("Error dari Google:", errorData);
             throw new Error(`Google API responded with status: ${response.status}`);
         }
         
         const data = await response.json();
         
-        // Mengambil teks JSON murni dari balasan Gemini
-        const rawJson = data.candidates[0].content.parts[0].text;
+        // Mengambil teks balasan dari Gemini
+        let rawJson = data.candidates[0].content.parts[0].text;
+        
+        // PENGAMANAN BARU: Bersihkan backticks markdown jika AI membandel
+        rawJson = rawJson.replace(/```json/gi, '').replace(/```/gi, '').trim();
+
         const renunganList = JSON.parse(rawJson);
 
         // Kirim hasil ke frontend
         res.status(200).json(renunganList);
 
     } catch (error) {
-        console.error('Error in API route:', error);
-        res.status(500).json({ error: 'Gagal memproses data dari Gemini.' });
+        // Log ini akan muncul di tab "Logs" Vercel
+        console.error('Error in API route:', error.message);
+        res.status(500).json({ error: 'Gagal memproses data dari Gemini. Cek Logs Vercel.' });
     }
 }
