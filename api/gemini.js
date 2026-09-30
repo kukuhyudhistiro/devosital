@@ -22,10 +22,19 @@ export default async function handler(req, res) {
         1. Gunakan bahasa Indonesia yang baik dan baku.
         2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan.
         3. Renungan harus berpusat pada Alkitab, bersifat membangun, aplikatif, dan relevan untuk kehidupan sehari-hari.
-        4. Panjang isi_renungan sekitar 150–250 kata. Sebut Yesus dengan Tuhan Yesus, bukan hanya Yesus.
-        5. Panjang doa sekitar 60–80 kata, ditutup dengan "dalam nama Yesus Kristus. Amin."
-        6. Sertakan ayat Alkitab yang relevan dengan renungan, beserta teks lengkapnya (dari versi Terjemahan Baru LAI).
+        4. Panjang isi_renungan sekitar 150–200 kata. Terdiri dari paragraf pembuka, penjelasan ayat, dan aplikasi praktis.
+        5. Sebut Yesus dengan Tuhan Yesus, bukan hanya Yesus.
+        6. Panjang doa sekitar 40–70 kata, ditutup dengan "dalam nama Yesus Kristus. Amin."
+        7. Sertakan ayat Alkitab yang relevan dengan renungan, beserta teks lengkapnya (dari versi Terjemahan Baru LAI).
   
+        ATURAN AYAT ALKITAB (PENTING):
+        1. Ayat WAJIB dikutip dari Alkitab versi TERJEMAHAN BARU (TB) terbitan LAI (Lembaga Alkitab Indonesia).
+        2. Sertakan ISI AYAT LENGKAP, bukan hanya referensinya. Tuliskan teks ayat apa adanya sesuai TB LAI.
+        3. Jika ayat yang dipilih mencakup lebih dari satu ayat, tuliskan seluruh teks ayat tersebut secara berurutan.
+        4. Cantumkan referensi dalam format "Nama Kitab Pasal:Ayat" (contoh: "Yohanes 3:16" atau "Mazmur 23:1-3").
+        5. Jangan mengutip dari versi lain (BIS, TMV, KJV, NIV, dll). Hanya gunakan TB LAI.
+        6. Jika ragu terhadap teks persis TB LAI, pilih ayat yang umum dan mudah diverifikasi (mis. Yohanes 3:16, Mazmur 23:1, Filipi 4:13) agar kutipan tetap akurat.
+
         Kembalikan output HANYA berupa JSON objek (tanpa penjelasan tambahan, tanpa markdown code block) dengan key "renungan" yang berisi daftar 1 renungan.
 
         Struktur JSON WAJIB:
