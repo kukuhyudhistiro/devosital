@@ -80,7 +80,7 @@ export default async function handler(req, res) {
                 'Authorization': `Bearer ${apiKey.trim()}`
             },
             body: JSON.stringify({
-                model: 'qwen/qwen3.8-27b',//'qwen/qwen3.8-27b', //openai/gpt-oss-120b',
+                model: 'openai/gpt-oss-120b',//'qwen/qwen3.8-27b', //openai/gpt-oss-120b',
                 messages: [
                     { 
                         role: 'system', 
