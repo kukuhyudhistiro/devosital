@@ -20,16 +20,25 @@ export default async function handler(req, res) {
         1. Gunakan bahasa Indonesia yang baik dan baku.
         2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan.
         3. Renungan harus berpusat pada Alkitab, bersifat membangun, aplikatif, dan relevan untuk kehidupan sehari-hari.
-        4. Panjang isi_renungan sekitar 150–250 kata, terdiri dari paragraf pembuka, penjelasan ayat, dan aplikasi praktis.
-        5. Panjang doa sekitar 40–80 kata, menggunakan kata ganti "kami" atau "kita", ditutup dengan "dalam nama Yesus Kristus. Amin."
+        4. Panjang isi_renungan sekitar 150–250 kata.
+        5. Panjang doa sekitar 60–80 kata, ditutup dengan "dalam nama Yesus Kristus. Amin."
 
-        ATURAN AYAT ALKITAB (PENTING):
-        1. Ayat WAJIB dikutip dari Alkitab versi TERJEMAHAN BARU (TB) terbitan LAI (Lembaga Alkitab Indonesia).
-        2. Sertakan ISI AYAT LENGKAP, bukan hanya referensinya. Tuliskan teks ayat apa adanya sesuai Terjemahan Baru Lembaga Alkitab Indonesia.
-        3. Jika ayat yang dipilih mencakup lebih dari satu ayat, tuliskan seluruh teks ayat tersebut secara berurutan.
-        4. Cantumkan referensi dalam format "Nama Kitab Pasal:Ayat" (contoh: "Yohanes 3:16" atau "Mazmur 23:1-3").
-        5. Jangan mengutip dari versi lain (BIS, TMV, KJV, NIV, dll). Hanya gunakan TB LAI.
-        6. Jika ragu terhadap teks persis TB LAI, pilih ayat yang umum dan mudah diverifikasi (mis. Yohanes 3:16, Mazmur 23:1, Filipi 4:13) agar kutipan tetap akurat.
+        ATURAN AYAT ALKITAB (PENTING — WAJIB DIPATUHI):
+        1. Ayat WAJIB diambil dari API Indonesia (apiindonesia.id) endpoint Alkitab.
+        2. JANGAN menuliskan isi teks ayat dari pengetahuan internal Anda.
+        Teks ayat HARUS berasal dari respons API.
+        3. Endpoint API Alkitab (sesuaikan dengan dokumentasi resmi):
+        https://use.apiindonesia.id/api/v1/alkitab
+        Parameter yang perlu dikirim:
+        - kitab   : nama kitab dalam bahasa Indonesia (contoh: "Yohanes", "Mazmur", "Filipi")
+        - pasal   : nomor pasal (integer)
+        - ayat    : nomor ayat (integer) — jika rentang, panggil per ayat lalu gabungkan
+        4. Sertakan header autentikasi:
+        x-api-key: aip_live_OGysOHnNvwc2H1OJyslex0wFtpGnp9qg
+        5. Ambil field teks ayat dari respons JSON (mis. data.teks atau data.text — sesuaikan dengan struktur respons aktual).
+        6. Simpan teks ayat lengkap hasil API ke dalam field "ayat_teks".
+        7. Cantumkan referensi dalam format "Nama Kitab Pasal:Ayat" (contoh: "Yohanes 3:16").
+        8. Jika API gagal diakses atau struktur respons tidak sesuai, isi "ayat_teks" dengan string kosong dan tambahkan "catatan_api" berisi pesan error.
 
         Kembalikan output HANYA berupa JSON objek (tanpa penjelasan tambahan, tanpa markdown code block) dengan key "renungan" yang berisi daftar 1 renungan.
 
@@ -37,10 +46,10 @@ export default async function handler(req, res) {
         {
         "renungan": [
             {
-            "tanggal": "DD MMMM YYYY",
+            "tanggal": "DD MMM YYYY",
             "judul": "Judul renungan yang singkat dan menarik",
             "ayat": "Nama Kitab Pasal:Ayat",
-            "ayat_teks": "Isi ayat lengkap versi Terjemahan Baru (TB) LAI",
+            "ayat_teks": "Isi ayat lengkap hasil respons API Alkitab (TB)",
             "isi_renungan": "Isi renungan lengkap...",
             "doa": "Doa penutup..."
             }
