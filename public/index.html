@@ -5,26 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devositum Fidei</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; color: #333; }
+        :root {
+            color-scheme: light;
+            --page-bg: #f4f6f3;
+            --surface: #fff;
+            --text: #29332d;
+            --muted: #626e66;
+            --action: #397a54;
+            --action-hover: #2e6846;
+            --card-accent: #4CAF50;
+            --verse-bg: #edf4ef;
+            --verse-border: #52796f;
+            --verse-reference: #365f51;
+            --prayer-bg: #edf3e7;
+            --shadow: 0 2px 4px rgba(25, 40, 30, 0.1);
+            --switch-track: #cbd7ce;
+            --switch-thumb: #fff;
+        }
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --page-bg: #171d19;
+            --surface: #232c26;
+            --text: #edf3ee;
+            --muted: #b5c1b8;
+            --action: #397a54;
+            --action-hover: #478b63;
+            --card-accent: #78a987;
+            --verse-bg: #2c3931;
+            --verse-border: #80aa8e;
+            --verse-reference: #b4d9bf;
+            --prayer-bg: #343d30;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+            --switch-track: #527a60;
+            --switch-thumb: #f4f7f4;
+        }
+        body { max-width: 800px; margin: 0 auto; padding: 20px; background-color: var(--page-bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 180ms ease, color 180ms ease; }
+        .page-toolbar { display: flex; justify-content: flex-end; margin-bottom: 8px; }
         .header { text-align: center; margin-bottom: 30px; }
         .header h1 { font-family: Georgia, 'Times New Roman', serif; }
         .header p { font-family: Georgia, 'Times New Roman', serif; font-style: italic; }
-        .control-panel { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        button { background-color: #4CAF50; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold;}
-        button:hover { background-color: #45a049; }
-        button:disabled { background-color: #cccccc; cursor: not-allowed; }
-        .renungan-card { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 5px solid #4CAF50; }
-        .tanggal { font-weight: bold; color: #666; font-size: 0.9em; }
-        .ayat-card { background: #f3f7f4; border-left: 3px solid #52796f; padding: 14px 16px; margin: 16px 0 20px; border-radius: 0 4px 4px 0; }
-        .ayat { color: #3f665b; font-size: 0.9em; font-weight: bold; }
-        .ayat-teks { margin: 8px 0 0; color: #39443f; font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; font-style: italic; line-height: 1.7; white-space: pre-line; }
-        .doa { background: #f1f8e9; padding: 10px; border-radius: 4px; margin-top: 15px; font-style: italic; }
+        .control-panel { background: var(--surface); padding: 20px; border-radius: 8px; box-shadow: var(--shadow); margin-bottom: 20px; }
+        .generate-button { background-color: var(--action); color: #fff; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; }
+        .generate-button:hover { background-color: var(--action-hover); }
+        .generate-button:disabled { background-color: #737d76; cursor: not-allowed; }
+        .generate-button:focus-visible, .theme-toggle:focus-visible { outline: 3px solid #e0a82e; outline-offset: 3px; }
+        .theme-toggle { display: inline-flex; align-items: center; gap: 9px; padding: 6px 10px; border: 1px solid var(--muted); border-radius: 20px; background: var(--surface); color: var(--text); cursor: pointer; font: inherit; font-size: 0.9rem; }
+        .theme-switch-track { position: relative; display: inline-block; width: 38px; height: 22px; flex: 0 0 38px; border-radius: 11px; background: var(--switch-track); transition: background-color 180ms ease; }
+        .theme-switch-thumb { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--switch-thumb); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); transition: transform 180ms ease; }
+        :root[data-theme="dark"] .theme-switch-thumb { transform: translateX(16px); }
+        .renungan-card { background: var(--surface); color: var(--text); padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: var(--shadow); border-left: 5px solid var(--card-accent); }
+        .tanggal, .footer { color: var(--muted); }
+        .tanggal { font-weight: bold; font-size: 0.9em; }
+        .ayat-card { background: var(--verse-bg); border-left: 3px solid var(--verse-border); padding: 14px 16px; margin: 16px 0 20px; border-radius: 0 4px 4px 0; }
+        .ayat { color: var(--verse-reference); font-size: 0.9em; font-weight: bold; }
+        .ayat-teks { margin: 8px 0 0; color: var(--text); font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; font-style: italic; line-height: 1.7; white-space: pre-line; }
+        .doa { background: var(--prayer-bg); color: var(--text); padding: 10px; border-radius: 4px; margin-top: 15px; font-style: italic; }
         .renungan-card p, .doa { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.75; }
-        #loading { display: none; text-align: center; margin: 20px; font-weight: bold; color: #4CAF50; }
-        .footer { text-align: center; margin-top: 40px; padding-top: 16px; color: #666; font-size: 0.9em; }
+        #loading { display: none; text-align: center; margin: 20px; font-weight: bold; color: var(--verse-reference); }
+        .footer { text-align: center; margin-top: 40px; padding-top: 16px; font-size: 0.9em; }
+        @media (max-width: 480px) {
+            body { padding: 16px; }
+            .control-panel, .renungan-card { padding: 16px; }
+            .ayat-card { padding: 12px; }
+        }
     </style>
 </head>
 <body>
+
+    <div class="page-toolbar">
+        <button id="themeToggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Ganti ke mode gelap">
+            <span class="theme-switch-track" aria-hidden="true"><span class="theme-switch-thumb"></span></span>
+            <span id="themeLabel">Terang</span>
+        </button>
+    </div>
 
     <div class="header">
         <h1>DEVOSITUM</h1>
@@ -32,7 +85,7 @@
     </div>
 
     <div class="control-panel">
-        <button id="generateBtn" onclick="generateRenungan()">Mulai Saat Teduh Hari Ini</button>
+        <button id="generateBtn" class="generate-button" onclick="generateRenungan()">Mulai Saat Teduh Hari Ini</button>
     </div>
 
     <div id="loading">Sedang merenung dan menyusun kata... (Membutuhkan 10-20 detik)</div>
@@ -40,6 +93,24 @@
     <div id="resultContainer"></div>
 
     <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const themeLabel = document.getElementById('themeLabel');
+
+        function setTheme(theme) {
+            const isDark = theme === 'dark';
+            document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+            themeToggle.setAttribute('aria-checked', String(isDark));
+            themeToggle.setAttribute('aria-label', `Ganti ke mode ${isDark ? 'terang' : 'gelap'}`);
+            themeLabel.textContent = isDark ? 'Gelap' : 'Terang';
+        }
+
+        setTheme(localStorage.getItem('devositum-theme') === 'dark' ? 'dark' : 'light');
+        themeToggle.addEventListener('click', () => {
+            const nextTheme = themeToggle.getAttribute('aria-checked') === 'true' ? 'light' : 'dark';
+            setTheme(nextTheme);
+            localStorage.setItem('devositum-theme', nextTheme);
+        });
+
         async function generateRenungan() {
             const btn = document.getElementById('generateBtn');
             const loading = document.getElementById('loading');
