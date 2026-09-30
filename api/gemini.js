@@ -40,7 +40,7 @@ export default async function handler(req, res) {
                 'Authorization': `Bearer ${apiKey.trim()}`
             },
             body: JSON.stringify({
-                model: 'llama-3.1-8b-instant',
+                model: 'openai/gpt-oss-120b',
                 messages: [
                     { 
                         role: 'system', 
