@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     });
 
     const promptText = `
-        Buatkan renungan Kristen harian untuk 3 hari berturut-turut, dimulai dari tanggal ${hariIni}. 
+        Buatkan renungan Kristen harian untuk 1 hari ini, tanggal ${hariIni}. 
         Setiap renungan harus memiliki tema yang saling berkaitan atau membangun untuk satu minggu kedepan.
         
         KEMBALIKAN HANYA DALAM FORMAT ARRAY JSON MURNI tanpa markdown.
