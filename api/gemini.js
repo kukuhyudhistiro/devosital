@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         1. Gunakan bahasa Indonesia yang baik dan baku.
         2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan.
         3. Renungan harus berpusat pada Alkitab, bersifat membangun, aplikatif, dan relevan untuk kehidupan sehari-hari.
-        4. Panjang isi_renungan sekitar 200–300 kata, terdiri dari paragraf pembuka, penjelasan ayat, dan aplikasi praktis.
+        4. Panjang isi_renungan sekitar 150–250 kata, terdiri dari paragraf pembuka, penjelasan ayat, dan aplikasi praktis.
         5. Panjang doa sekitar 40–80 kata, menggunakan kata ganti "kami" atau "kita", ditutup dengan "dalam nama Yesus Kristus. Amin."
 
         ATURAN AYAT ALKITAB (PENTING):
