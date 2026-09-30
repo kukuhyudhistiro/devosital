@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     });
 
     const promptText = `
-        Buatkan renungan Kristen harian untuk 1 hari pada tanggal ${hariIni}.
+        Buatkan renungan Kristen harian untuk 1 hari pada tanggal ${hariIni} waktu Indonesia (UTC+7).
 
         ATURAN PENULISAN:
         1. Gunakan bahasa Indonesia yang baik dan baku.
