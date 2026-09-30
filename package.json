@@ -1,0 +1,9 @@
+{
+  "name": "devosital",
+  "version": "1.0.0",
+  "description": "Generator Renungan Kristen 7 Hari",
+  "scripts": {
+    "start": "node"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Renungan Kristen 7 Hari</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; color: #333; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .control-panel { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        button { background-color: #4CAF50; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold;}
+        button:hover { background-color: #45a049; }
+        button:disabled { background-color: #cccccc; cursor: not-allowed; }
+        .renungan-card { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-left: 5px solid #4CAF50; }
+        .tanggal { font-weight: bold; color: #666; font-size: 0.9em; }
+        .ayat { font-style: italic; color: #1565C0; margin-bottom: 15px; display: block; }
+        .doa { background: #f1f8e9; padding: 10px; border-radius: 4px; margin-top: 15px; font-style: italic; }
+        #loading { display: none; text-align: center; margin: 20px; font-weight: bold; color: #4CAF50; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Devosital: Renungan 7 Hari</h1>
+        <p>Hasilkan renungan mingguan Anda secara otomatis</p>
+    </div>
+
+    <div class="control-panel">
+        <button id="generateBtn" onclick="generateRenungan()">Generate 7 Hari Renungan</button>
+    </div>
+
+    <div id="loading">Sedang merenung dan menyusun kata... (Membutuhkan 10-20 detik)</div>
+    
+    <div id="resultContainer"></div>
+
+    <script>
+        async function generateRenungan() {
+            const btn = document.getElementById('generateBtn');
+            const loading = document.getElementById('loading');
+            const resultContainer = document.getElementById('resultContainer');
+            
+            btn.disabled = true;
+            loading.style.display = 'block';
+            resultContainer.innerHTML = '';
+
+            try {
+                // Memanggil backend serverless Vercel kita sendiri
+                const response = await fetch('/api/gemini');
+                
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData.error || `HTTP error! status: ${response.status}`);
+                }
+                
+                // Vercel backend kita sudah mengembalikan array JSON murni
+                const renunganList = await response.json();
+
+                // Render JSON ke HTML
+                renunganList.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'renungan-card';
+                    card.innerHTML = `
+                        <div class="tanggal">${item.tanggal}</div>
+                        <h2>${item.judul}</h2>
+                        <span class="ayat">📖 ${item.ayat}</span>
+                        <p>${item.isi_renungan}</p>
+                        <div class="doa"><strong>Doa:</strong> ${item.doa}</div>
+                    `;
+                    resultContainer.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                loading.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
