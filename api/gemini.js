@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     const cleanApiKey = apiKey.trim();
     //const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${cleanApiKey}`;
     //const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${cleanApiKey}`;
-    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-3-flash:generateContent?key=${cleanApiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${cleanApiKey}`;
     try {
         const response = await fetch(url, {
             method: 'POST',
