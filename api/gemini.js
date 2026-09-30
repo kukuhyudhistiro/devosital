@@ -14,10 +14,10 @@ export default async function handler(req, res) {
     });
 
     const promptText = `
-        Buatkan renungan Kristen harian untuk 1 hari ini, dimulai dari tanggal ${hariIni}. 
-        Setiap renungan harus memiliki tema yang saling berkaitan atau membangun untuk satu minggu tersebut.
+        Buatkan renungan Kristen harian untuk 1 hari pada tanggal ${hariIni}. 
+        Jangan gunakan kata Kamu, ganti dengan Anda, kita atau yang lebih tepat.
         
-        Kembalikan output berupa JSON objek dengan key "renungan" yang berisi daftar 7 renungan.
+        Kembalikan output berupa JSON objek dengan key "renungan" yang berisi daftar 1 renungan.
         Struktur JSON wajib:
         {
           "renungan": [
