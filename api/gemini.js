@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     });
 
     const promptText = `
-        Buatkan renungan Kristen harian untuk hari ini.
+        Buatkan renungan Kristen harian untuk 1 hari ini.
 
         ATURAN PENULISAN:
         1. Gunakan bahasa Indonesia yang baik dan baku.
@@ -80,7 +80,7 @@ export default async function handler(req, res) {
                 'Authorization': `Bearer ${apiKey.trim()}`
             },
             body: JSON.stringify({
-                model: 'openai/gpt-oss-120b',//'qwen/qwen3.8-27b', //openai/gpt-oss-120b',
+                model: 'qwen/qwen3.8-27b',//'qwen/qwen3.8-27b', //openai/gpt-oss-120b',
                 messages: [
                     { 
                         role: 'system', 
