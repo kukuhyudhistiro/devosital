@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     });
 
     const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
-    const MODEL = 'qwen/qwen3.8-27b';
+    const MODEL = 'openai/gpt-oss-120b'; //qwen/qwen3.8-27b';
 
     async function callGroq(prompt, systemPrompt, temperature = 0.7) {
         const r = await fetch(GROQ_URL, {
