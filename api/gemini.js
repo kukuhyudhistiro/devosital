@@ -14,6 +14,42 @@ export default async function handler(req, res) {
     });
 
     const promptText = `
+        Buatkan renungan Kristen harian untuk 1 hari pada tanggal ${hariIni}.
+
+        ATURAN PENULISAN:
+        1. Gunakan bahasa Indonesia yang baik dan baku.
+        2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan.
+        3. Renungan harus berpusat pada Alkitab, bersifat membangun, aplikatif, dan relevan untuk kehidupan sehari-hari.
+        4. Panjang isi_renungan sekitar 250–400 kata, terdiri dari paragraf pembuka, penjelasan ayat, dan aplikasi praktis.
+        5. Panjang doa sekitar 60–100 kata, menggunakan kata ganti "kami" atau "kita", ditutup dengan "dalam nama Yesus Kristus. Amin."
+
+        ATURAN AYAT ALKITAB (PENTING):
+        1. Ayat WAJIB dikutip dari Alkitab versi TERJEMAHAN BARU (TB) terbitan LAI (Lembaga Alkitab Indonesia).
+        2. Sertakan ISI AYAT LENGKAP, bukan hanya referensinya. Tuliskan teks ayat apa adanya sesuai TB LAI.
+        3. Jika ayat yang dipilih mencakup lebih dari satu ayat, tuliskan seluruh teks ayat tersebut secara berurutan.
+        4. Cantumkan referensi dalam format "Nama Kitab Pasal:Ayat" (contoh: "Yohanes 3:16" atau "Mazmur 23:1-3").
+        5. Jangan mengutip dari versi lain (BIS, TMV, KJV, NIV, dll). Hanya gunakan TB LAI.
+        6. Jika ragu terhadap teks persis TB LAI, pilih ayat yang umum dan mudah diverifikasi (mis. Yohanes 3:16, Mazmur 23:1, Filipi 4:13) agar kutipan tetap akurat.
+
+        Kembalikan output HANYA berupa JSON objek (tanpa penjelasan tambahan, tanpa markdown code block) dengan key "renungan" yang berisi daftar 1 renungan.
+
+        Struktur JSON WAJIB:
+        {
+        "renungan": [
+            {
+            "tanggal": "YYYY-MM-DD",
+            "judul": "Judul renungan yang singkat dan menarik",
+            "ayat": "Nama Kitab Pasal:Ayat",
+            "ayat_teks": "Isi ayat lengkap versi Terjemahan Baru (TB) LAI",
+            "isi_renungan": "Isi renungan lengkap...",
+            "doa": "Doa penutup..."
+            }
+        ]
+        }
+
+        Pastikan JSON valid, tidak ada trailing comma, dan semua string menggunakan tanda kutip ganda.
+    `;
+   /*  const promptText = `
         Buatkan renungan Kristen harian untuk 1 hari pada tanggal ${hariIni}. 
         Jangan gunakan kata Kamu, ganti dengan Anda, kita atau yang lebih tepat.
         
@@ -30,7 +66,7 @@ export default async function handler(req, res) {
             }
           ]
         }
-    `;
+    `; */
 
     try {
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
