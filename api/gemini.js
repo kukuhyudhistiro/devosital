@@ -55,7 +55,16 @@ export default async function handler(req, res) {
 
         if (!response.ok) {
             const errorText = await response.text();
-            return res.status(response.status).json({ error: `Error Groq (${response.status}): ${errorText}` });
+            let errorMessage = errorText;
+
+            try {
+                const errorData = JSON.parse(errorText);
+                errorMessage = errorData.error?.message || errorData.message || errorText;
+            } catch {
+                // Keep the original response when Groq does not return JSON.
+            }
+
+            return res.status(response.status).json({ error: errorMessage });
         }
 
         const data = await response.json();
