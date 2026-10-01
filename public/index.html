@@ -122,7 +122,8 @@
 
             try {
                 // Memanggil backend serverless Vercel kita sendiri
-                const response = await fetch('/api/gemini');
+                //const response = await fetch('/api/gemini');
+                const response = await fetch('/api/renungan');
                 
                 if (!response.ok) {
                     const errorText = await response.text();
