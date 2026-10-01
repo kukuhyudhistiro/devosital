@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
         ATURAN PENULISAN:
         1. Gunakan bahasa Indonesia yang baik dan baku.
-        2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan.
+        2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan. Tapi jangan ubah teks Alkitab jika ditemukan kata "kamu", biarkan seperti aslinya.
         3. Renungan harus berpusat pada Alkitab, bersifat menguatkan, aplikatif, dan relevan untuk kehidupan sehari-hari.
         4. Panjang isi_renungan sekitar 150–200 kata. Terdiri dari paragraf pembuka, penjelasan ayat, dan aplikasi praktis.
         5. Sebut Yesus dengan Tuhan Yesus, bukan hanya Yesus.
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         7. Sertakan ayat Alkitab yang relevan dengan renungan, beserta teks lengkapnya (dari versi Terjemahan Baru LAI).
         8. Variasi tema dari perjanjian lama dan baru, serta tema yang berbeda setiap hari.
         9. Jangan mengulang tema yang sama dalam 7 hari berturut-turut.
-        10.Sesekali gunakan Tokoh Alkitab (misal: Daud, Paulus, Musa) sebagai contoh dalam renungan.
+        10. Gunakan Tokoh Alkitab (misal: Daud, Paulus, Musa dll) sebagai contoh dalam renungan.
   
         ATURAN AYAT ALKITAB (PENTING):
         1. Ayat WAJIB dikutip dari Alkitab versi TERJEMAHAN BARU (TB) terbitan LAI (Lembaga Alkitab Indonesia).
