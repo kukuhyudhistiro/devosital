@@ -29,7 +29,15 @@ export default async function handler(req, res) {
         "Kekuatan dalam Kelemahan melalui Anugerah Kristus",
         "Penyertaan Tuhan di Lembah Kelam",
         "Persahabatan dan Komunitas yang Saling Menguatkan",
-        "Pikiran yang Diperbarui dan Bebas dari Kecemasan"
+        "Pikiran yang Diperbarui dan Bebas dari Kecemasan",
+        "Pelajaran dari Tokoh Alkitab yang Menginspirasi",
+        "Kemenangan atas Godaan dan Pencobaan",
+        "Panggilan untuk Hidup dalam Kebenaran dan Integritas",
+        "Kebahagiaan Sejati yang Berasal dari Tuhan",
+        "Menghadapi Ketidakpastian dengan Iman yang Teguh",
+        "Pentingnya Doa dan Kehidupan Rohani yang Konsisten",
+        "Menyebarkan Kasih Kristus melalui Tindakan Nyata",
+        "Menemukan Damai Sejati di Tengah Kesibukan Dunia"
     ];
 
     const daftarKategori = [
