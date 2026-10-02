@@ -7,43 +7,43 @@
     <style>
         :root {
             color-scheme: light;
-            --page-bg: #f4f6f3;
-            --surface: #fff;
-            --text: #29332d;
-            --muted: #626e66;
-            --action: #397a54;
-            --action-hover: #2e6846;
-            --card-accent: #4CAF50;
-            --verse-bg: #edf4ef;
-            --verse-border: #52796f;
-            --verse-reference: #365f51;
-            --prayer-bg: #edf3e7;
-            --shadow: 0 2px 4px rgba(25, 40, 30, 0.1);
-            --switch-track: #cbd7ce;
-            --switch-thumb: #fff;
+            --page-bg: #e8e2d5;
+            --surface: #fbf4e5;
+            --text: #263b2e;
+            --muted: #77634e;
+            --action: #365d43;
+            --action-hover: #294b35;
+            --card-accent: #805a3b;
+            --verse-bg: #f1e7d4;
+            --verse-border: #805a3b;
+            --verse-reference: #355940;
+            --prayer-bg: #eee4d1;
+            --shadow: 0 5px 16px rgba(72, 51, 31, 0.12);
+            --switch-track: #c8b99f;
+            --switch-thumb: #fffaf0;
         }
         :root[data-theme="dark"] {
             color-scheme: dark;
-            --page-bg: #171d19;
-            --surface: #232c26;
-            --text: #edf3ee;
-            --muted: #b5c1b8;
-            --action: #397a54;
-            --action-hover: #478b63;
-            --card-accent: #78a987;
-            --verse-bg: #2c3931;
-            --verse-border: #80aa8e;
-            --verse-reference: #b4d9bf;
-            --prayer-bg: #343d30;
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
-            --switch-track: #527a60;
-            --switch-thumb: #f4f7f4;
+            --page-bg: #1d241f;
+            --surface: #2b3028;
+            --text: #eee8d9;
+            --muted: #c0ad91;
+            --action: #55795b;
+            --action-hover: #668b6c;
+            --card-accent: #b38a5d;
+            --verse-bg: #35352b;
+            --verse-border: #b38a5d;
+            --verse-reference: #c3d0ad;
+            --prayer-bg: #39362b;
+            --shadow: 0 5px 16px rgba(0, 0, 0, 0.24);
+            --switch-track: #667457;
+            --switch-thumb: #f5eddd;
         }
         body { max-width: 800px; margin: 0 auto; padding: 20px; background-color: var(--page-bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; transition: background-color 180ms ease, color 180ms ease; }
         .page-toolbar { display: flex; justify-content: flex-end; margin-bottom: 8px; }
         .header { text-align: center; margin-bottom: 30px; }
-        .header h1 { font-family: Georgia, 'Times New Roman', serif; }
-        .header p { font-family: Georgia, 'Times New Roman', serif; font-style: italic; }
+        .header h1 { color: var(--verse-reference); font-family: Georgia, 'Times New Roman', serif; }
+        .header p { color: var(--muted); font-family: Georgia, 'Times New Roman', serif; font-style: italic; }
         .control-panel { background: var(--surface); padding: 20px; border-radius: 8px; box-shadow: var(--shadow); margin-bottom: 20px; }
         .generate-button { background-color: var(--action); color: #fff; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; }
         .generate-button:hover { background-color: var(--action-hover); }
@@ -58,7 +58,7 @@
         .tanggal { font-weight: bold; font-size: 0.9em; }
         .ayat-card { background: var(--verse-bg); border-left: 3px solid var(--verse-border); padding: 14px 16px; margin: 16px 0 20px; border-radius: 0 4px 4px 0; }
         .ayat { color: var(--verse-reference); font-size: 1rem; font-weight: bold; }
-        .renungan-card .ayat-teks { margin: 8px 0 0; color: var(--text); font-family: Georgia, 'Times New Roman', serif; font-size: 0.95rem; font-style: italic; line-height: 1.7; white-space: pre-line; }
+        .renungan-card .ayat-teks { margin: 8px 0 0; color: var(--muted); font-family: Georgia, 'Times New Roman', serif; font-size: 0.95rem; font-style: italic; line-height: 1.7; white-space: pre-line; }
         .doa { background: var(--prayer-bg); color: var(--text); padding: 10px; border-radius: 4px; margin-top: 15px; font-style: italic; }
         .renungan-card p, .doa { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.75; }
         #loading { display: none; text-align: center; margin: 20px; font-weight: bold; color: var(--verse-reference); }
