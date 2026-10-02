@@ -62,7 +62,7 @@ export default async function handler(req, res) {
         1. Gunakan bahasa Indonesia yang baik dan baku.
         2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan. Jangan ubah teks Alkitab jika ada kata "kamu" di dalam teks Alkitab asli.
         3. Renungan harus berpusat pada Alkitab, bersifat menguatkan, aplikatif, dan relevan dengan fokus tema "${temaAcak}".
-        4. Panjang isi_renungan sekitar 150–200 kata. Terdiri dari 3 paragraf: pembuka, penjelasan ayat, dan aplikasi praktis.
+        4. Panjang isi_renungan sekitar 150–200 kata. Terdiri dari 3 paragraf: pembuka disertai pertanyaan retorik dan reflektif, penjelasan ayat, dan aplikasi praktis.
         5. Sebut Yesus dengan "Tuhan Yesus", bukan hanya "Yesus".
         6. Panjang doa sekitar 40–70 kata, ditutup dengan "dalam nama Yesus Kristus. Amin."
         7. Sertakan ayat Alkitab yang relevan dengan tema, beserta teks lengkapnya (versi Terjemahan Baru LAI).
