@@ -19,25 +19,24 @@ export default async function handler(req, res) {
     // 2. Daftar tema acak untuk menjamin setiap generate memiliki fokus yang berbeda
     const daftarTema = [
         "Keberanian & Keteguhan Hati di Tengah Pergumulan",
-        "Pengharapan yang Tak Goncang pada Janji Allah",
+        "Menjadi Pembawa Damai di Tengah Konflik",
+        "menjadi Pemimpin yang berintegritas dan Bijaksana",
         "Kasih Setia Tuhan dan Rasa Syukur Harian",
         "Kesetiaan dalam Hal-Hal Kecil",
         "Pengampunan dan Kedamaian Hati",
+        "Pentingnya Berdoa bersama keluarga",
         "Kerendahan Hati dan Pelayanan Bagi Sesama",
         "Hikmat dan Kebijaksanaan dalam Mengambil Keputusan",
         "Ketaatan dan Kepercayaan Sepenuhnya pada Rencana Tuhan",
         "Kekuatan dalam Kelemahan melalui Anugerah Kristus",
-        "Penyertaan Tuhan di Lembah Kelam",
         "Persahabatan dan Komunitas yang Saling Menguatkan",
         "Pikiran yang Diperbarui dan Bebas dari Kecemasan",
         "Pelajaran dari Tokoh Alkitab yang Menginspirasi",
         "Kemenangan atas Godaan dan Pencobaan",
-        "Panggilan untuk Hidup dalam Kebenaran dan Integritas",
         "Kebahagiaan Sejati yang Berasal dari Tuhan",
         "Menghadapi Ketidakpastian dengan Iman yang Teguh",
         "Pentingnya Doa dan Kehidupan Rohani yang Konsisten",
-        "Menyebarkan Kasih Kristus melalui Tindakan Nyata",
-        "Menemukan Damai Sejati di Tengah Kesibukan Dunia"
+        "Menyebarkan Kasih Kristus melalui Tindakan Nyata"
     ];
 
     const daftarKategori = [
@@ -60,9 +59,11 @@ export default async function handler(req, res) {
 
         ATURAN PENULISAN:
         1. Gunakan bahasa Indonesia yang baik dan baku.
-        2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan. Jangan ubah teks Alkitab jika ada kata "kamu" di dalam teks Alkitab asli.
+        2. Jangan gunakan kata "Kamu". Gunakan "Anda", "kita", atau sapaan yang lebih tepat dan sopan. 
+            Jangan ubah teks Alkitab jika ada kata "kamu" di dalam teks Alkitab asli.
         3. Renungan harus berpusat pada Alkitab, bersifat menguatkan, aplikatif, dan relevan dengan fokus tema "${temaAcak}".
-        4. Panjang isi_renungan sekitar 150–200 kata. Terdiri dari 3 paragraf: pembuka disertai pertanyaan retorik dan reflektif, penjelasan ayat, dan aplikasi praktis.
+        4. Panjang isi_renungan sekitar 150–200 kata. Terdiri dari 3 paragraf: pembuka disertai pertanyaan retorik dan reflektif ke kehidupan sehari-hari
+            yang mengarah pada pemahaman bagian ayat nats, penjelasan ayat, dan aplikasi praktis.
         5. Sebut Yesus dengan "Tuhan Yesus", bukan hanya "Yesus".
         6. Panjang doa sekitar 40–70 kata, ditutup dengan "dalam nama Yesus Kristus. Amin."
         7. Sertakan ayat Alkitab yang relevan dengan tema, beserta teks lengkapnya (versi Terjemahan Baru LAI).
