@@ -19,6 +19,7 @@
             --verse-reference: #355940;
             --prayer-bg: #eee4d1;
             --shadow: 0 5px 16px rgba(72, 51, 31, 0.12);
+            --shadow-hover: 0 8px 20px rgba(72, 51, 31, 0.18);
             --switch-track: #c8b99f;
             --switch-thumb: #fffaf0;
         }
@@ -36,6 +37,7 @@
             --verse-reference: #c3d0ad;
             --prayer-bg: #39362b;
             --shadow: 0 5px 16px rgba(0, 0, 0, 0.24);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.4);
             --switch-track: #667457;
             --switch-thumb: #f5eddd;
         }
@@ -63,6 +65,52 @@
         .renungan-card p, .doa { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.75; }
         #loading { display: none; text-align: center; margin: 20px; font-weight: bold; color: var(--verse-reference); }
         .footer { text-align: center; margin-top: 40px; padding-top: 16px; font-size: 0.9em; }
+
+        /* --- NEW: Pendalaman Alkitab link cards --- */
+        .pa-section {
+            margin-top: 40px;
+        }
+        .pa-section h2 {
+            color: var(--verse-reference);
+            font-family: Georgia, 'Times New Roman', serif;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 1.4rem;
+        }
+        .pa-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .pa-card {
+            background: var(--surface);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text);
+            border-left: 5px solid var(--card-accent);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .pa-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .pa-card-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--verse-reference);
+            margin-bottom: 6px;
+        }
+        .pa-card-desc {
+            color: var(--muted);
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         @media (max-width: 480px) {
             body { padding: 16px; }
             .control-panel, .renungan-card { padding: 16px; }
@@ -170,5 +218,21 @@
     </script>
 
     <footer class="footer">Devosional Digital Made with love by Kukuh Y. - Malang 2026</footer>
+
+    <!-- NEW: Pendalaman Alkitab links -->
+    <section class="pa-section">
+        <h2>Pendalaman Alkitab</h2>
+        <div class="pa-links">
+            <a href="https://patokoh.vercel.app/" target="_blank" rel="noopener noreferrer" class="pa-card">
+                <span class="pa-card-title">PA Tokoh</span>
+                <span class="pa-card-desc">Pendalaman Alkitab tentang tokoh-tokoh Alkitab</span>
+            </a>
+            <a href="https://pamhb.vercel.app/" target="_blank" rel="noopener noreferrer" class="pa-card">
+                <span class="pa-card-title">PA MHB</span>
+                <span class="pa-card-desc">Memulai Hidup Baru — 6 pertemuan dasar iman Kristen</span>
+            </a>
+        </div>
+    </section>
+
 </body>
 </html>
