@@ -50,7 +50,7 @@
         .generate-button { background-color: var(--action); color: #fff; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; }
         .generate-button:hover { background-color: var(--action-hover); }
         .generate-button:disabled { background-color: #737d76; cursor: not-allowed; }
-        .generate-button:focus-visible, .theme-toggle:focus-visible { outline: 3px solid #e0a82e; outline-offset: 3px; }
+        .generate-button:focus-visible, .theme-toggle:focus-visible, .copy-button:focus-visible { outline: 3px solid #e0a82e; outline-offset: 3px; }
         .theme-toggle { display: inline-flex; align-items: center; gap: 9px; padding: 6px 10px; border: 1px solid var(--muted); border-radius: 20px; background: var(--surface); color: var(--text); cursor: pointer; font: inherit; font-size: 0.9rem; }
         .theme-switch-track { position: relative; display: inline-block; width: 38px; height: 22px; flex: 0 0 38px; border-radius: 11px; background: var(--switch-track); transition: background-color 180ms ease; }
         .theme-switch-thumb { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--switch-thumb); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25); transition: transform 180ms ease; }
@@ -63,6 +63,8 @@
         .renungan-card .ayat-teks { margin: 8px 0 0; color: var(--muted); font-family: Georgia, 'Times New Roman', serif; font-size: 0.95rem; font-style: italic; line-height: 1.7; white-space: pre-line; }
         .doa { background: var(--prayer-bg); color: var(--text); padding: 10px; border-radius: 4px; margin-top: 15px; font-style: italic; }
         .renungan-card p, .doa { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.75; }
+        .copy-button { display: inline-flex; align-items: center; margin-top: 16px; padding: 8px 12px; border: 1px solid var(--action); border-radius: 4px; background: transparent; color: var(--action); cursor: pointer; font: inherit; font-size: 0.9rem; font-weight: 600; }
+        .copy-button:hover { background: var(--action); color: #fff; }
         #loading { display: none; text-align: center; margin: 20px; font-weight: bold; color: var(--verse-reference); }
         .footer { text-align: center; margin-top: 40px; padding-top: 16px; font-size: 0.9em; }
 
@@ -152,6 +154,49 @@
             themeLabel.textContent = isDark ? 'Gelap' : 'Terang';
         }
 
+        async function copyRenungan(card, button) {
+            const content = [
+                card.querySelector('h2')?.textContent,
+                card.querySelector('.ayat')?.textContent.replace(/^📖\s*/, ''),
+                card.querySelector('.ayat-teks')?.textContent,
+                card.querySelector(':scope > p')?.textContent,
+                card.querySelector('.doa')?.textContent
+            ].filter(Boolean).join('\n\n');
+
+            try {
+                if (navigator.clipboard?.writeText) {
+                    try {
+                        await navigator.clipboard.writeText(content);
+                    } catch {
+                        copyWithTextarea(content);
+                    }
+                } else {
+                    copyWithTextarea(content);
+                }
+                button.textContent = 'Tersalin';
+            } catch {
+                button.textContent = 'Gagal menyalin';
+            }
+
+            button.disabled = true;
+            setTimeout(() => {
+                button.textContent = 'Salin renungan';
+                button.disabled = false;
+            }, 1800);
+        }
+
+        function copyWithTextarea(content) {
+            const textarea = document.createElement('textarea');
+            textarea.value = content;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            const copied = document.execCommand('copy');
+            textarea.remove();
+            if (!copied) throw new Error('Clipboard tidak tersedia');
+        }
+
         setTheme(localStorage.getItem('devositum-theme') === 'dark' ? 'dark' : 'light');
         themeToggle.addEventListener('click', () => {
             const nextTheme = themeToggle.getAttribute('aria-checked') === 'true' ? 'light' : 'dark';
@@ -204,6 +249,12 @@
                         <p>${item.isi_renungan}</p>
                         <div class="doa"><strong>Doa:</strong> ${item.doa}</div>
                     `;
+                    const copyButton = document.createElement('button');
+                    copyButton.className = 'copy-button';
+                    copyButton.type = 'button';
+                    copyButton.textContent = 'Salin renungan';
+                    copyButton.addEventListener('click', () => copyRenungan(card, copyButton));
+                    card.appendChild(copyButton);
                     resultContainer.appendChild(card);
                 });
 
