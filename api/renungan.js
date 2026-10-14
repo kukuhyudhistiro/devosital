@@ -18,25 +18,24 @@ export default async function handler(req, res) {
 
     // 2. Daftar tema acak untuk menjamin setiap generate memiliki fokus yang berbeda
     const daftarTema = [
+        "Memulai dan konsistensi Mezbah keluarga",
+        "Kerendahan Hati dan Pelayanan Bagi Sesama",
+        "Hikmat dan Kebijaksanaan dalam Mengambil Keputusan",
+        "Ketaatan dan Kepercayaan Sepenuhnya pada Rencana Tuhan",
+        "Kekuatan dalam Kelemahan melalui Anugerah Kristus",
+        "Istri yang Mendukung dan Mendoakan Suami",
+        "Persekutuan dan Komunitas yang Saling Menguatkan",
+        "Tugas Suami sebagai Kepala Keluarga dan Pemimpin Rohani",
+        "Pelajaran dari Tokoh Alkitab yang Menginspirasi",
+        "Kehidupan Suami Istri yang Berpusat pada Tuhan",
+        "Menghadapi Ketidakpastian dengan Iman yang Teguh",
+        "Menjadi Orang Tua yang Bijaksana dan Teladan bagi Anak",
         "Keberanian & Keteguhan Hati di Tengah Pergumulan",
         "Menjadi Pembawa Damai di Tengah Konflik",
         "menjadi Pemimpin yang berintegritas dan Bijaksana",
         "Kasih Setia Tuhan dan Rasa Syukur Harian",
         "Kesetiaan dalam Hal-Hal Kecil",
-        "Pengampunan dan Kedamaian Hati",
-        "Pentingnya Berdoa bersama keluarga",
-        "Kerendahan Hati dan Pelayanan Bagi Sesama",
-        "Hikmat dan Kebijaksanaan dalam Mengambil Keputusan",
-        "Ketaatan dan Kepercayaan Sepenuhnya pada Rencana Tuhan",
-        "Kekuatan dalam Kelemahan melalui Anugerah Kristus",
-        "Persahabatan dan Komunitas yang Saling Menguatkan",
-        "Pikiran yang Diperbarui dan Bebas dari Kecemasan",
-        "Pelajaran dari Tokoh Alkitab yang Menginspirasi",
-        "Kemenangan atas Godaan dan Pencobaan",
-        "Kebahagiaan Sejati yang Berasal dari Tuhan",
-        "Menghadapi Ketidakpastian dengan Iman yang Teguh",
-        "Pentingnya Doa dan Kehidupan Rohani yang Konsisten",
-        "Menyebarkan Kasih Kristus melalui Tindakan Nyata"
+        "Pengampunan dan Kedamaian Hati"
     ];
 
     const daftarKategori = [
