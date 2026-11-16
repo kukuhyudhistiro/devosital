@@ -18,34 +18,41 @@ export default async function handler(req, res) {
 
     // 2. Daftar tema acak untuk menjamin setiap generate memiliki fokus yang berbeda
     const daftarTema = [
-        "Memulai dan konsistensi Mezbah keluarga",
-        "Kerendahan Hati dan Pelayanan Bagi Sesama",
-        "Hikmat dan Kebijaksanaan dalam Mengambil Keputusan",
-        "Ketaatan dan Kepercayaan Sepenuhnya pada Rencana Tuhan",
-        "Kekuatan dalam Kelemahan melalui Anugerah Kristus",
-        "Istri yang Mendukung dan Mendoakan Suami",
-        "Persekutuan dan Komunitas yang Saling Menguatkan",
-        "Tugas Suami sebagai Kepala Keluarga dan Pemimpin Rohani",
-        "Pelajaran dari Tokoh Alkitab yang Menginspirasi",
-        "Kehidupan Suami Istri yang Berpusat pada Tuhan",
-        "Menghadapi Ketidakpastian dengan Iman yang Teguh",
-        "Menjadi Orang Tua yang Bijaksana dan Teladan bagi Anak",
-        "Keberanian & Keteguhan Hati di Tengah Pergumulan",
-        "Menjadi Pembawa Damai di Tengah Konflik",
-        "menjadi Pemimpin yang berintegritas dan Bijaksana",
-        "Kasih Setia Tuhan dan Rasa Syukur Harian",
-        "Kesetiaan dalam Hal-Hal Kecil",
-        "Pengampunan dan Kedamaian Hati"
-    ];
-
-    const daftarKategori = [
-        "Perjanjian Lama (Kitab Taurat, Sejarah, Puisi, atau Nabi)",
-        "Perjanjian Baru (Injil, Kisah Para Rasul, atau Surat-Surat)"
+        {
+            judul: "Ia Makin Besar: Ukuran Sejati Pelayanan",
+            ayatInti: "Yohanes 3:30; Lukas 10:20; Matius 7:21–23",
+            inti: "Pelayanan yang berhasil membuat orang makin melihat Yesus, bukan makin melihat kita. Yesus bahkan mengingatkan bahwa orang bisa melakukan banyak hal dalam nama-Nya tanpa sungguh mengenal Dia.",
+            arah: "Sebelum bekerja atau melayani, tanyakan pada diri sendiri: siapa yang akan dipermuliakan dari apa yang saya kerjakan hari ini?"
+        },
+        {
+            judul: "Rumah sebagai Mimbar Pertama",
+            ayatInti: "1 Timotius 3:4–5; 1 Timotius 5:8; Ulangan 6:6–7",
+            inti: "Kualitas pelayanan diuji di meja makan, bukan di mimbar. Kesabaran, kelembutan, dan keteladanan di rumah adalah khotbah yang paling lama didengar anak dan pasangan.",
+            arah: "Sebelum melayani orang lain, layani dulu satu orang di rumah dengan sengaja, lewat sapaan, doa singkat, atau maaf yang tertunda."
+        },
+        {
+            judul: "Aku dan Seisi Rumahku: Kesepakatan yang Dipersembahkan",
+            ayatInti: "Yosua 24:15; Amos 3:3; Matius 18:19–20",
+            inti: "Kesepakatan keluarga adalah keputusan bersama untuk beribadah kepada Tuhan, bukan sekadar tidak bertengkar. Kesepakatan itu dibangun lewat percakapan, doa bersama, dan arah hidup yang sama.",
+            arah: "Adakah satu hal yang perlu disepakati bersama keluarga minggu ini (waktu doa, prioritas, keputusan) dan diserahkan kepada Tuhan?"
+        },
+        {
+            judul: "Sehati yang Benar: Bukan Sekadar Rukun",
+            ayatInti: "Mazmur 133:1; Filipi 2:2–4; Kisah 5:1–11; Kejadian 11:1–9",
+            inti: "Kesatuan bisa membangun Kerajaan Allah, tetapi bisa juga membangun “menara” kita sendiri. Kesehatian yang diberkati lahir dari kerendahan hati, yaitu saling merendahkan diri di dalam takut akan Kristus (Ef 5:21), bukan dari keseragaman atau ambisi bersama.",
+            arah: "Periksa kesepakatan kita, baik di rumah maupun di pelayanan: untuk siapa sebenarnya kita bersepakat?"
+        },
+        {
+            judul: "Setia Walau Rumah Belum Sehati",
+            ayatInti: "Yohanes 7:5; 1 Petrus 3:1–2; Mazmur 127:1; Galatia 6:9",
+            inti: "Renungan ini untuk mereka yang melayani sementara pasangan, orang tua, atau anak belum seiman atau belum sejalan. Tuhanlah yang membangun rumah. Bagian kita adalah setia, mengasihi, dan tidak jemu-jemu berbuat baik.",
+            arah: "Serahkan anggota keluarga yang belum sehati kepada Tuhan, lalu lakukan satu tindakan kasih untuknya hari ini tanpa berkhotbah."
+        }
     ];
 
     // Mengambil tema acak & acak angka seed setiap panggilan
-    const temaAcak = daftarTema[Math.floor(Math.random() * daftarTema.length)];
-    const kategoriAcak = daftarKategori[Math.floor(Math.random() * daftarKategori.length)];
+    const tema = daftarTema[Math.floor(Math.random() * daftarTema.length)];
+    const temaAcak = tema.judul;
     const randomSeed = Math.floor(Math.random() * 100000);
 
     // 3. Prompt dinamis yang menyertakan tanggal dan tema acak
@@ -53,7 +60,10 @@ export default async function handler(req, res) {
         Buatkan 1 renungan Kristen harian khusus untuk hari ini, ${hariIni}.
 
         FOKUS TEMA KHUSUS: "${temaAcak}"
-        SUMBER AYAT: Utamakan dari ${kategoriAcak}.
+        AYAT INTI: ${tema.ayatInti}
+        INTI RENUNGAN: ${tema.inti}
+        ARAH PAGI INI: ${tema.arah}
+        SUMBER AYAT: Pilih ayat nats dari daftar AYAT INTI di atas.
         ID REFERENSI ACAK: ${randomSeed}
 
         ATURAN PENULISAN:
