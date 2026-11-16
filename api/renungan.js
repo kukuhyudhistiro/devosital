@@ -50,9 +50,15 @@ export default async function handler(req, res) {
         }
     ];
 
+    const daftarKategori = [
+        "Perjanjian Lama (Kitab Taurat, Sejarah, Puisi, atau Nabi)",
+        "Perjanjian Baru (Injil, Kisah Para Rasul, atau Surat-Surat)"
+    ];
+
     // Mengambil tema acak & acak angka seed setiap panggilan
     const tema = daftarTema[Math.floor(Math.random() * daftarTema.length)];
     const temaAcak = tema.judul;
+    const kategoriAcak = daftarKategori[Math.floor(Math.random() * daftarKategori.length)];
     const randomSeed = Math.floor(Math.random() * 100000);
 
     // 3. Prompt dinamis yang menyertakan tanggal dan tema acak
@@ -60,10 +66,10 @@ export default async function handler(req, res) {
         Buatkan 1 renungan Kristen harian khusus untuk hari ini, ${hariIni}.
 
         FOKUS TEMA KHUSUS: "${temaAcak}"
-        AYAT INTI: ${tema.ayatInti}
+        AYAT INTI (rujukan tema): ${tema.ayatInti}
         INTI RENUNGAN: ${tema.inti}
         ARAH PAGI INI: ${tema.arah}
-        SUMBER AYAT: Pilih ayat nats dari daftar AYAT INTI di atas.
+        SUMBER AYAT: Utamakan dari ${kategoriAcak}.
         ID REFERENSI ACAK: ${randomSeed}
 
         ATURAN PENULISAN:
